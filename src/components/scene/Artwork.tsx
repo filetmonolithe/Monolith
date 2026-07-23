@@ -106,7 +106,7 @@ export default function Artwork(props: ArtworkProps) {
       targetOpacity = 1;
     } else {
       targetScale = 0.995;
-targetBrightness = 0.65;
+targetBrightness = 0.5;
 targetOpacity = 0.65;
     }
   }

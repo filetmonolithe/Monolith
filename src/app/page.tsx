@@ -27,19 +27,32 @@ export default function Home() {
 
       <ProjectOverlay />
 
-      <section className="absolute inset-0 z-10 flex items-center justify-center">
+      <section
+        className="
+          absolute
+          inset-0
+          z-10
+          flex
+          items-center
+          justify-center
+          pointer-events-none
+        "
+      >
         <h1
           onClick={() => router.push("/contact")}
           className="
+            pointer-events-auto
             cursor-pointer
+            select-none
+
             text-white
             text-[34px]
             md:text-[42px]
             font-light
             tracking-[-0.03em]
+
             transition-opacity
             duration-500
-            select-none
           "
           style={{
             opacity: heroOpacity,

@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import Scene from "@/components/scene/Scene";
 import ProjectOverlay from "@/components/ui/ProjectOverlay";
 
@@ -7,15 +9,17 @@ import { useFocusStore } from "@/stores/focus";
 import { useScrollStore } from "@/lib/scroll";
 
 export default function Home() {
+  const router = useRouter();
+
   const mode = useFocusStore((state) => state.mode);
   const progress = useScrollStore((state) => state.progress);
 
   const heroOpacity =
-  mode === "gallery"
-    ? progress < 0.05
-      ? 1
-      : 1 - progress * 0.4
-    : 0;
+    mode === "gallery"
+      ? progress < 0.05
+        ? 1
+        : 1 - progress * 0.4
+      : 0;
 
   return (
     <main className="relative w-screen h-screen overflow-hidden bg-black">
@@ -23,9 +27,11 @@ export default function Home() {
 
       <ProjectOverlay />
 
-      <section className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+      <section className="absolute inset-0 z-10 flex items-center justify-center">
         <h1
+          onClick={() => router.push("/contact")}
           className="
+            cursor-pointer
             text-white
             text-[34px]
             md:text-[42px]
@@ -33,6 +39,7 @@ export default function Home() {
             tracking-[-0.03em]
             transition-opacity
             duration-500
+            select-none
           "
           style={{
             opacity: heroOpacity,
